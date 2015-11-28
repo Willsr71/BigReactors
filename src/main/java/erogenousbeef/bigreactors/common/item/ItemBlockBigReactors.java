@@ -18,21 +18,19 @@ public class ItemBlockBigReactors extends ItemBlock {
 
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
-        if(this.hasSubtypes) {
+        if (this.hasSubtypes) {
             int metadata = itemStack.getItemDamage();
             return super.getUnlocalizedName(itemStack) + "." + Integer.toString(metadata);
-        }
-        else {
+        } else {
             return super.getUnlocalizedName(itemStack);
         }
     }
 
     @Override
     public String getUnlocalizedName() {
-        if(this.hasSubtypes) {
+        if (this.hasSubtypes) {
             return super.getUnlocalizedName() + ".0";
-        }
-        else {
+        } else {
             return super.getUnlocalizedName();
         }
     }

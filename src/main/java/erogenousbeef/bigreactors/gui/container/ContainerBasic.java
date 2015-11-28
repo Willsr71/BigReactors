@@ -5,13 +5,13 @@ import net.minecraft.inventory.Container;
 
 public class ContainerBasic extends Container {
 
-	public ContainerBasic() {
-		super();
-	}
-	
-	@Override
-	public boolean canInteractWith(EntityPlayer entityplayer) {
-		return true;
-	}
+    public ContainerBasic() {
+        super();
+    }
+
+    @Override
+    public boolean canInteractWith(EntityPlayer entityplayer) {
+        return true;
+    }
 
 }

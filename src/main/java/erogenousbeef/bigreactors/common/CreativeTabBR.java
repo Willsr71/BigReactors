@@ -5,13 +5,11 @@ import net.minecraft.item.Item;
 
 public class CreativeTabBR extends CreativeTabs {
 
-	public CreativeTabBR(String par2Str)
-	{
-		super(par2Str);
-	}
+    public CreativeTabBR(String par2Str) {
+        super(par2Str);
+    }
 
-	public Item getTabIconItem()
-	{
-		return Item.getItemFromBlock(BigReactors.blockYelloriteOre);
-	}
+    public Item getTabIconItem() {
+        return Item.getItemFromBlock(BigReactors.blockYelloriteOre);
+    }
 }

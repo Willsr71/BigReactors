@@ -4,6 +4,7 @@ import net.minecraft.util.IIcon;
 
 public interface IBeefGuiGrabbable {
 
-	public IIcon getIcon();
-	public String getName();
+    public IIcon getIcon();
+
+    public String getName();
 }

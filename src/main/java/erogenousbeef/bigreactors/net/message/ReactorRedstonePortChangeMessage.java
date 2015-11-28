@@ -1,20 +1,22 @@
 package erogenousbeef.bigreactors.net.message;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.tileentity.TileEntity;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import erogenousbeef.bigreactors.common.multiblock.tileentity.TileEntityReactorRedstonePort;
 import erogenousbeef.bigreactors.net.message.base.TileMessageServer;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.tileentity.TileEntity;
 
 public class ReactorRedstonePortChangeMessage extends TileMessageServer<TileEntityReactorRedstonePort> {
     private int newCircut, newLevel;
     private boolean newGt, pulse;
 
-    public ReactorRedstonePortChangeMessage() { super(); }
-    
+    public ReactorRedstonePortChangeMessage() {
+        super();
+    }
+
     public ReactorRedstonePortChangeMessage(TileEntityReactorRedstonePort port, int newCircut, int newLevel, boolean newGt, boolean pulse) {
-    	super(port);
+        super(port);
         this.newCircut = newCircut;
         this.newLevel = newLevel;
         this.newGt = newGt;
@@ -23,7 +25,7 @@ public class ReactorRedstonePortChangeMessage extends TileMessageServer<TileEnti
 
     @Override
     public void fromBytes(ByteBuf buf) {
-    	super.fromBytes(buf);
+        super.fromBytes(buf);
         newCircut = buf.readInt();
         newLevel = buf.readInt();
         newGt = buf.readBoolean();
@@ -32,7 +34,7 @@ public class ReactorRedstonePortChangeMessage extends TileMessageServer<TileEnti
 
     @Override
     public void toBytes(ByteBuf buf) {
-    	super.toBytes(buf);
+        super.toBytes(buf);
         buf.writeInt(newCircut);
         buf.writeInt(newLevel);
         buf.writeBoolean(newGt);
@@ -40,17 +42,17 @@ public class ReactorRedstonePortChangeMessage extends TileMessageServer<TileEnti
     }
 
     public static class Handler extends TileMessageServer.Handler<ReactorRedstonePortChangeMessage,
-    															  TileEntityReactorRedstonePort> {
+            TileEntityReactorRedstonePort> {
         @Override
         public IMessage handle(ReactorRedstonePortChangeMessage message, MessageContext ctx, TileEntityReactorRedstonePort te) {
-        	te.onReceiveUpdatePacket(message.newCircut, message.newLevel, message.newGt, message.pulse);
+            te.onReceiveUpdatePacket(message.newCircut, message.newLevel, message.newGt, message.pulse);
             return null;
         }
-        
+
         @Override
         public TileEntityReactorRedstonePort getImpl(TileEntity te) {
-        	return te instanceof TileEntityReactorRedstonePort ?
-        			(TileEntityReactorRedstonePort)te : null;
+            return te instanceof TileEntityReactorRedstonePort ?
+                    (TileEntityReactorRedstonePort) te : null;
         }
     }
 }

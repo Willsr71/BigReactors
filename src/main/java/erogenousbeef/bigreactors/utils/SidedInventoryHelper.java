@@ -6,30 +6,30 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class SidedInventoryHelper extends InventoryHelper {
 
-	private ISidedInventory sidedInventory;
-	private ForgeDirection side;
-	
-	public SidedInventoryHelper(ISidedInventory inventory, ForgeDirection side) {
-		super(inventory);
-		
-		this.sidedInventory = inventory;
-		this.side = side;
-	}
-	
-	@Override
-	protected boolean canAdd(ItemStack stack, int slot) {
-		return sidedInventory.canInsertItem(slot, stack, this.side.ordinal());
-	}
-	
-	@Override
-	protected boolean canRemove(ItemStack stack, int slot) {
-		return sidedInventory.canExtractItem(slot, stack, this.side.ordinal());
-	}
-	
-	@Override
-	public int[] getSlots() {
-		return sidedInventory.getAccessibleSlotsFromSide(this.side.ordinal());
-	}
+    private ISidedInventory sidedInventory;
+    private ForgeDirection side;
+
+    public SidedInventoryHelper(ISidedInventory inventory, ForgeDirection side) {
+        super(inventory);
+
+        this.sidedInventory = inventory;
+        this.side = side;
+    }
+
+    @Override
+    protected boolean canAdd(ItemStack stack, int slot) {
+        return sidedInventory.canInsertItem(slot, stack, this.side.ordinal());
+    }
+
+    @Override
+    protected boolean canRemove(ItemStack stack, int slot) {
+        return sidedInventory.canExtractItem(slot, stack, this.side.ordinal());
+    }
+
+    @Override
+    public int[] getSlots() {
+        return sidedInventory.getAccessibleSlotsFromSide(this.side.ordinal());
+    }
 
 
 }

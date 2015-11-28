@@ -5,38 +5,38 @@ import erogenousbeef.core.multiblock.MultiblockValidationException;
 
 public class TileEntityTurbineRotorPart extends TileEntityTurbinePartBase {
 
-	public TileEntityTurbineRotorPart() {
-	}
+    public TileEntityTurbineRotorPart() {
+    }
 
-	@Override
-	public void isGoodForFrame() throws MultiblockValidationException {
-		throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
-	}
+    @Override
+    public void isGoodForFrame() throws MultiblockValidationException {
+        throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
+    }
 
-	@Override
-	public void isGoodForSides() throws MultiblockValidationException {
-		throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
-	}
+    @Override
+    public void isGoodForSides() throws MultiblockValidationException {
+        throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
+    }
 
-	@Override
-	public void isGoodForTop() throws MultiblockValidationException {
-		throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
-	}
+    @Override
+    public void isGoodForTop() throws MultiblockValidationException {
+        throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
+    }
 
-	@Override
-	public void isGoodForBottom() throws MultiblockValidationException {
-		throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
-	}
+    @Override
+    public void isGoodForBottom() throws MultiblockValidationException {
+        throw new MultiblockValidationException("Rotor parts may only be placed in the turbine interior");
+    }
 
-	@Override
-	public void isGoodForInterior() throws MultiblockValidationException {
-	}
+    @Override
+    public void isGoodForInterior() throws MultiblockValidationException {
+    }
 
-	public boolean isRotorShaft() {
-		return BlockTurbineRotorPart.isRotorShaft(getBlockMetadata());
-	}
+    public boolean isRotorShaft() {
+        return BlockTurbineRotorPart.isRotorShaft(getBlockMetadata());
+    }
 
-	public boolean isRotorBlade() {
-		return BlockTurbineRotorPart.isRotorBlade(getBlockMetadata());
-	}
+    public boolean isRotorBlade() {
+        return BlockTurbineRotorPart.isRotorBlade(getBlockMetadata());
+    }
 }

@@ -4,31 +4,13 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import erogenousbeef.bigreactors.common.BigReactors;
-import erogenousbeef.bigreactors.net.message.ControlRodChangeInsertionMessage;
-import erogenousbeef.bigreactors.net.message.ControlRodChangeNameMessage;
-import erogenousbeef.bigreactors.net.message.ControlRodUpdateMessage;
-import erogenousbeef.bigreactors.net.message.DeviceChangeExposureMessage;
-import erogenousbeef.bigreactors.net.message.DeviceUpdateExposureMessage;
-import erogenousbeef.bigreactors.net.message.DeviceUpdateMessage;
-import erogenousbeef.bigreactors.net.message.DeviceUpdateRotationMessage;
-import erogenousbeef.bigreactors.net.message.MachineCommandActivateMessage;
-import erogenousbeef.bigreactors.net.message.ReactorAccessPortChangeDirectionMessage;
-import erogenousbeef.bigreactors.net.message.ReactorRedNetPortChangeMessage;
-import erogenousbeef.bigreactors.net.message.ReactorRedstonePortChangeMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.ReactorChangeWasteEjectionMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.ReactorCommandEjectMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.ReactorCommandEjectToPortMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.ReactorUpdateMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.ReactorUpdateWasteEjectionMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.TurbineChangeInductorMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.TurbineChangeMaxIntakeMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.TurbineChangeVentMessage;
-import erogenousbeef.bigreactors.net.message.multiblock.TurbineUpdateMessage;
+import erogenousbeef.bigreactors.net.message.*;
+import erogenousbeef.bigreactors.net.message.multiblock.*;
 
 public class CommonPacketHandler {
 
 	/*
-	 * Naming Convention:
+     * Naming Convention:
 	 *  Client >> Server
 	 *   [Machine|TileEntity]ChangeMessage -- a full state change message (for large/batch commits)
 	 *   [Machine|TileEntity]Change[Datum]Message -- a client request to change [Datum]
@@ -39,7 +21,7 @@ public class CommonPacketHandler {
 	 *   
 	 *   Generic Format: [Machine|TileEntity][Operation][Type]Message
 	 */
-	
+
     public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(BigReactors.CHANNEL.toLowerCase());
 
     /**
@@ -48,7 +30,7 @@ public class CommonPacketHandler {
      */
     // Be careful not to reference any client code in your message handlers, such as WorldClient!
     public static void init() {
-    	// Server >> Client Messages
+        // Server >> Client Messages
         INSTANCE.registerMessage(DeviceUpdateMessage.Handler.class, DeviceUpdateMessage.class, 1, Side.CLIENT);
         INSTANCE.registerMessage(DeviceUpdateRotationMessage.Handler.class, DeviceUpdateRotationMessage.class, 3, Side.CLIENT);
         INSTANCE.registerMessage(DeviceUpdateExposureMessage.Handler.class, DeviceUpdateExposureMessage.class, 5, Side.CLIENT);
@@ -58,7 +40,7 @@ public class CommonPacketHandler {
         INSTANCE.registerMessage(TurbineUpdateMessage.Handler.class, TurbineUpdateMessage.class, 15, Side.CLIENT);
 
         // Client >> Server Messages
-    	INSTANCE.registerMessage(MachineCommandActivateMessage.Handler.class, MachineCommandActivateMessage.class, 0, Side.SERVER);
+        INSTANCE.registerMessage(MachineCommandActivateMessage.Handler.class, MachineCommandActivateMessage.class, 0, Side.SERVER);
         INSTANCE.registerMessage(DeviceChangeExposureMessage.Handler.class, DeviceChangeExposureMessage.class, 2, Side.SERVER);
         INSTANCE.registerMessage(ControlRodChangeNameMessage.Handler.class, ControlRodChangeNameMessage.class, 4, Side.SERVER);
         INSTANCE.registerMessage(ControlRodChangeInsertionMessage.Handler.class, ControlRodChangeInsertionMessage.class, 6, Side.SERVER);
