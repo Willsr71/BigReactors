@@ -327,6 +327,7 @@ public abstract class MultiblockTileEntityBase extends IMultiblockPart {
 
             if (te == null) {
                 //System.out.println("Block at " + neighbor.x + ", " + neighbor.y + ", " + neighbor.z + " is invalid");
+                this.worldObj.setBlockToAir(neighbor.x, neighbor.y, neighbor.z);
             }
 
             if (te instanceof IMultiblockPart) {
